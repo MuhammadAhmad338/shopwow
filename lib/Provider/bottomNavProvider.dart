@@ -4,7 +4,6 @@ import 'package:shopwow/Views/cartScreen.dart';
 import 'package:shopwow/Views/categoriesScreen.dart';
 import 'package:shopwow/Views/homeScreen.dart';
 import 'package:shopwow/Views/profileScreen.dart';
-
 import '../Views/wishlistScreen.dart';
 
 class BottomBarProvider with ChangeNotifier {
@@ -13,8 +12,8 @@ class BottomBarProvider with ChangeNotifier {
   final _screens = const [
     HomeScreen(),
     CategoriesScreen(),
-    WishlistScreen(),
     CartScreen(),
+    WishlistScreen(),
     ProfileScreen()
   ];
 

@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
         if (currentConnectivity != ConnectivityResult.none &&
             result == ConnectivityResult.none) {
           // Internet connection lost
-          showToast('Internet connection lost');
+          showToast('Please Check your Internet Connection');
         } else if (currentConnectivity == ConnectivityResult.none &&
             result != ConnectivityResult.none) {
           // Internet connection restored

@@ -7,7 +7,7 @@ class CartProvider with ChangeNotifier {
   List<CartProducts> _cartProducts = [];
   List<CartProducts> get cartProducts => _cartProducts;
 
-  addToCart(Product product) {
+  void addToCart(Product product) {
     var existingProduct =
         _cartProducts.firstWhere((element) => element.id == product.id);
     if (existingProduct != null) {
@@ -18,7 +18,7 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  removeFromCart(Product product) {
+  void removeFromCart(Product product) {
     var productExists =
         _cartProducts.firstWhere((element) => element.id == product.id);
     if (productExists != null) {
@@ -29,7 +29,7 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  clearCart() {
+  void clearCart() {
     _cartProducts = [];
     notifyListeners();
   }
