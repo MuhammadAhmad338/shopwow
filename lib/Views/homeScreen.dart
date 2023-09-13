@@ -14,10 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
   final ApiServices _apiServices = ApiServices();
   final WidthHeight _widthHeight = WidthHeight();
   final List<Map<String, String>> categories = [
-    {"icon": "assets/images/diamond-ring.png", "name": "jewelry"},
-    {"icon": "assets/images/polo.png", "name": "men's clothing"},
-    {"icon": "assets/images/responsive.png", "name": "electronics"},
-    {"icon": "assets/images/long-sleeves-dress.png", "name": "women clothing"},
+    {"icon": "assets/images/diamond-ring.png", "name": "Jewelry"},
+    {"icon": "assets/images/polo.png", "name": "Men's Clothing"},
+    {"icon": "assets/images/responsive.png", "name": "Electronics"},
+    {"icon": "assets/images/long-sleeves-dress.png", "name": "Women Clothing"},
 
   ];
    final double spaceBetweenCategories = 40.0;
@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             height: _widthHeight.screenHeight(context, 0.16),
             decoration: const BoxDecoration(
-              color: Colors.black,
+              color: Colors.black87,
             ),
             child: Column(
               children: [
@@ -63,7 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(width: _widthHeight.screenWidth(context, 0.02)),
                   ],
                 ),
-              
                 Expanded(
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,

@@ -12,9 +12,9 @@ class BottomBarProvider with ChangeNotifier {
   int get bottomIndex => _bottomIndex;
   final _screens = const [
     HomeScreen(),
+    CategoriesScreen(),
     WishlistScreen(),
     CartScreen(),
-    CategoriesScreen(),
     ProfileScreen()
   ];
 
