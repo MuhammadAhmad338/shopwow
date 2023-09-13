@@ -13,6 +13,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final ApiServices _apiServices = ApiServices();
   final WidthHeight _widthHeight = WidthHeight();
+  final List<Map<String, String>> categories = [
+    {"icon": "assets/images/diamond-ring.png", "name": "jewelry"},
+    {"icon": "assets/images/polo.png", "name": "men's clothing"},
+    {"icon": "assets/images/responsive.png", "name": "electronics"},
+    {"icon": "assets/images/long-sleeves-dress.png", "name": "women clothing"},
+
+  ];
+   final double spaceBetweenCategories = 40.0;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: [
           Container(
-            height: _widthHeight.screenHeight(context, 0.14),
+            height: _widthHeight.screenHeight(context, 0.16),
             decoration: const BoxDecoration(
               color: Colors.black,
             ),
@@ -30,12 +38,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Text("ShopWow",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.white)),
-                    SizedBox(width: _widthHeight.screenWidth(context, 0.08)),
+                     Row(
+                      children: [
+                        const Text("ShopWow",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.white)),
+                        const SizedBox(width: 10,),
+                        Image.asset("assets/images/panda.png", width: 35, height: 35)
+                      ],
+                    ),
+                    SizedBox(width: _widthHeight.screenWidth(context, 0.02)),
                     SizedBox(width: _widthHeight.screenWidth(context, 0.11)),
                     Image.asset("assets/images/filter.png",
                         color: Colors.white,
@@ -48,6 +62,33 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: _widthHeight.screenHeight(context, 0.035)),
                     SizedBox(width: _widthHeight.screenWidth(context, 0.02)),
                   ],
+                ),
+              
+                Expanded(
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) {
+                        final category = categories[index];
+                        final iconPath = category["icon"];
+                        return Row(
+                          children: [
+                              SizedBox(width: spaceBetweenCategories),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(iconPath!,
+                                    color: Colors.white, height: 35, width: 35),
+                                    SizedBox(height: _widthHeight.screenHeight(context, 0.006)),
+                                    Text(category["name"].toString(), style: const TextStyle(
+                                      fontSize: 8,color: Colors.white
+                                    ))
+                              ],
+                            ),
+                          ],
+                        );
+                      }),
                 )
               ],
             ),

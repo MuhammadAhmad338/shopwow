@@ -9,7 +9,6 @@ class CartScreen extends StatelessWidget {
     return  
      const Center(
         child: Text("Cart Screen"),
-     
       );
   }
 }
