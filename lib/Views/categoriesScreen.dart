@@ -13,6 +13,7 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
   final double spaceBetweenCategories = 40.0;
   final WidthHeight _widthHeight = WidthHeight();
+  
   final List<Map<String, String>> categories = [
     {"icon": "assets/images/diamond-ring.png", "name": "Jewelry"},
     {"icon": "assets/images/polo.png", "name": "Men's Clothing"},
@@ -26,7 +27,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         body: Column(
       children: [
         Container(
-          height: _widthHeight.screenHeight(context, 0.16),
+          height: _widthHeight.screenHeight(context, 0.15),
           decoration: const BoxDecoration(
             color: Colors.black87,
           ),
@@ -35,7 +36,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             child: Column(
               children: [
                  SizedBox(
-                  height: _widthHeight.screenHeight(context, 0.015),
+                  height: _widthHeight.screenHeight(context, 0.030),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

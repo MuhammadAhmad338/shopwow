@@ -9,6 +9,7 @@ class DeliveryCtaText extends StatefulWidget {
 }
 
 class _DeliveryCtaTextState extends State<DeliveryCtaText> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,7 +32,7 @@ class _DeliveryCtaTextState extends State<DeliveryCtaText> {
                           fontWeight: FontWeight.bold))
                 ])),
                 Text(
-                  "Yasrab Colony Street no 3,4 asdasdaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaasdasdasdasd",
+                  "Yasrab Colony Street no 3,4 sdasd",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),

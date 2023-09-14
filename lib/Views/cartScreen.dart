@@ -36,9 +36,7 @@ class _CartScreenState extends State<CartScreen> {
                     )),
               ),
             ),
-            
-                const DeliveryCtaText(),
-               
+            const DeliveryCtaText(),
           ],
         ),
       ),

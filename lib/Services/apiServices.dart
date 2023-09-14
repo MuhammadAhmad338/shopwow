@@ -20,4 +20,16 @@ class ApiServices {
     }
   }
 
+  Future<List<Product>> getProductsByCategory(String query) async {
+    Response response = await http.get(Uri.parse("https://webappoo8.onrender.com/products/search?title=${query}"), 
+    headers: {'Content-Type': 'application/json'});
+    if (response.statusCode == 200) {
+      List<dynamic> data = jsonDecode(response.body);
+      List<Product> products = data.map((item) => Product.fromJson(item)).toList();
+      return products;
+    } else {
+      throw("Can't got the products"); 
+    }
+  }
+
 }

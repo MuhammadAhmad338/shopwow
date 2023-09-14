@@ -8,7 +8,7 @@ import 'package:shopwow/Views/bottomNavigationBar.dart';
 import 'Provider/counterProvider.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => CounterProvider()),
     ChangeNotifierProvider(create: (context) => CartProvider()),
