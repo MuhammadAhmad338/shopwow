@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shopwow/Const/constants.dart';
 import 'package:shopwow/Provider/bottomNavProvider.dart';
 import 'package:shopwow/Provider/cartProvider.dart';
+import 'package:shopwow/Services/apiServices.dart';
 import 'package:shopwow/Views/bottomNavigationBar.dart';
 import 'Provider/counterProvider.dart';
 
@@ -12,7 +13,8 @@ void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => CounterProvider()),
     ChangeNotifierProvider(create: (context) => CartProvider()),
-    ChangeNotifierProvider(create: (context) => BottomBarProvider())
+    ChangeNotifierProvider(create: (context) => BottomBarProvider()),
+   ChangeNotifierProvider(create: (context) => ApiServices()),
   ], child: const MyApp()));
 }
 

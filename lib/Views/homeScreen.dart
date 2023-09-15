@@ -1,8 +1,12 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopwow/Const/widthheight.dart';
 import 'package:shopwow/Models/Products.dart';
+import 'package:shopwow/Provider/counterProvider.dart';
 import 'package:shopwow/Services/apiServices.dart';
+import 'package:shopwow/Views/searchScreen.dart';
+import 'package:shopwow/Widgets/homeItem.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final ApiServices _apiServices = ApiServices();
   final WidthHeight _widthHeight = WidthHeight();
   final double spaceBetweenCategories = 40.0;
+ 
   final List<Map<String, String>> categories = [
     {"icon": "assets/images/diamond-ring.png", "name": "Jewelry"},
     {"icon": "assets/images/polo.png", "name": "Men's Clothing"},
@@ -63,10 +68,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: _widthHeight.screenHeight(context, 0.06),
                         width: _widthHeight.screenWidth(context, 0.06)),
                     SizedBox(width: _widthHeight.screenWidth(context, 0.05)),
-                    Image.asset("assets/images/search.png",
-                        color: Colors.white,
-                        height: _widthHeight.screenHeight(context, 0.035),
-                        width: _widthHeight.screenHeight(context, 0.035)),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SearchScreen()));
+                      },
+                      child: Image.asset("assets/images/search.png",
+                          color: Colors.white,
+                          height: _widthHeight.screenHeight(context, 0.03),
+                          width: _widthHeight.screenHeight(context, 0.03)),
+                    ),
                     SizedBox(width: _widthHeight.screenWidth(context, 0.04)),
                   ],
                 ),
@@ -172,54 +182,37 @@ class _HomeScreenState extends State<HomeScreen> {
               left: _widthHeight.screenWidth(context, 0.03),
               right: _widthHeight.screenWidth(context, 0.03),
             ),
-            child: FutureBuilder<List<Product>>(
-                future: _apiServices.getProducts(),
-                builder: (context, snapshot) {
-                  var products = snapshot.data;
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (snapshot.hasError) {
-                    return const Center(child: Text("No Products Available!"));
-                  } else {
-                    return GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                mainAxisSpacing: 3.0,
-                                crossAxisSpacing: 3.0,
-                                crossAxisCount: 2),
-                        itemCount: products!.length,
-                        itemBuilder: (context, index) {
-                          var product = products[index];
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                  height:
-                                      _widthHeight.screenHeight(context, 0.1),
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                      color: Colors.black87,
-                                      borderRadius: BorderRadius.circular(
-                                          _widthHeight.screenWidth(
-                                              context, 0.02))),
-                                  child: Image.network(product.image.toString(),
-                                      fit: BoxFit.fill, height: 10, width: 10)),
-                              Text("${product.title}",
-                                  maxLines: 2,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black)),
-                              Text(
-                                "${product.price}",
-                              )
-                            ],
-                          );
-                        });
-                  }
-                }),
-          ),
-        )
-      ],
-    ));
+            child:  FutureBuilder<List<Product>>(
+              future: _apiServices.getProducts(),
+              builder: (context, snapshot) {
+                var products = snapshot.data;
+                if (snapshot.connectionState ==ConnectionState.waiting) {
+                  return  Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 5,
+                      color: Colors.pink.withOpacity(0.6),
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return const Center(
+                    child: Text("Oops Some error Occured!"),
+                  );
+                } else {
+                return GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    mainAxisSpacing: 3.0,
+                                    crossAxisSpacing: 3.0,
+                                    crossAxisCount: 2),
+                            itemCount: products!.length,
+                            itemBuilder: (context, index) {
+                              var product = products[index];
+                           
+                              return HomeItem(product: product);
+                            });
+              }
+  })))])
+            
+    );
   }
 }

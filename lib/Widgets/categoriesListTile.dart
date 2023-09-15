@@ -16,7 +16,7 @@ class CategoriesListTile extends StatefulWidget {
 class _CategoriesListTileState extends State<CategoriesListTile> {
   final WidthHeight _heightWidth = WidthHeight();
   bool toggleProducts = false;
-     
+
   void toggleIt() {
     setState(() {
       toggleProducts = !toggleProducts;
@@ -47,26 +47,27 @@ class _CategoriesListTileState extends State<CategoriesListTile> {
           ),
         ),
         Visibility(
-            visible: toggleProducts,
-            child: GridView.builder(
+          visible: toggleProducts,
+          child: GridView.builder(
               physics: const ScrollPhysics(),
-                itemCount: 6,
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisSpacing: 3.0,
-                    crossAxisSpacing: 3.0,
-                    crossAxisCount: 2),
-                itemBuilder: ((context, index) {
-                  return Container(
+              itemCount: 5,
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: 3.0,
+                  crossAxisSpacing: 3.0,
+                  crossAxisCount: 2),
+              itemBuilder: ((context, index) {
+                return Container(
                     height: _heightWidth.screenHeight(context, 0.0100),
                     width: _heightWidth.screenWidth(context, 0.0100),
-                    decoration: const BoxDecoration(
-                      color: Colors.grey
-                    ),
-                    child: Image.asset("assets/images/filter.png", fit: BoxFit.contain,)            
-                  );
-                })),
-          )],
+                    decoration: const BoxDecoration(color: Colors.grey),
+                    child: Image.asset(
+                      "assets/images/filter.png",
+                      fit: BoxFit.contain,
+                    ));
+              })),
+        )
+      ],
     );
   }
 }

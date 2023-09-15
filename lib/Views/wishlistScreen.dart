@@ -15,24 +15,25 @@ class _WishlistScreenState extends State<WishlistScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        Container(
-          height: _widthHeight.screenHeight(context, 0.02),
-          decoration: const BoxDecoration(color: Colors.black87),
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text("WishList", style: TextStyle(fontWeight: FontWeight.bold)),
-              Text(
-                "Select All",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-        )
-      ],
+        body: SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: double.infinity,
+            height: _widthHeight.screenHeight(context, 0.07),
+            decoration: const BoxDecoration(color: Colors.black87),
+            child: const Align(
+              alignment: Alignment.center,
+              child: Text("Wishlist",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
+          )
+        ],
+      ),
     ));
   }
 }
