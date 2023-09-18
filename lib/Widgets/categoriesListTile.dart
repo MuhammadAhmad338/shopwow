@@ -41,7 +41,10 @@ class _CategoriesListTileState extends State<CategoriesListTile> {
                 Text(widget.title.toString()),
               ],
             ),
-            trailing: Image.asset("assets/images/down-arrow.png",
+            trailing: Image.asset(
+                !toggleProducts
+                    ? "assets/images/arrow-down-sign-to-navigate.png"
+                    : "assets/images/upload.png",
                 height: _heightWidth.screenHeight(context, 0.05),
                 width: _heightWidth.screenWidth(context, 0.05)),
           ),

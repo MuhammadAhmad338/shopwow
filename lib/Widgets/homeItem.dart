@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shopwow/Const/widthheight.dart';
 import 'package:shopwow/Models/Products.dart';
 import 'package:shopwow/Provider/counterProvider.dart';
+import 'package:shopwow/Provider/wishlistProvider.dart';
 
 class HomeItem extends StatefulWidget {
   final Product product;
@@ -13,10 +14,11 @@ class HomeItem extends StatefulWidget {
 }
 
 class _HomeItemState extends State<HomeItem> {
-   final WidthHeight _widthHeight = WidthHeight();
+  final WidthHeight _widthHeight = WidthHeight();
   @override
   Widget build(BuildContext context) {
-     var provider = Provider.of<CounterProvider>(context);
+    var provider = Provider.of<CounterProvider>(context);
+    var wishlistProvider = Provider.of<WishlistProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -33,7 +35,8 @@ class _HomeItemState extends State<HomeItem> {
                     fit: BoxFit.fill, height: 10, width: 10)),
             GestureDetector(
               onTap: () {
-                provider.changeFavourite();
+                // provider.changeFavourite();
+                wishlistProvider.addToWishlist(widget.product);
               },
               child: Image.asset("assets/images/heart.png",
                   color: provider.isFavourite ? Colors.red : Colors.grey,

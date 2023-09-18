@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:shopwow/Const/widthheight.dart';
+import 'package:shopwow/Views/searchScreen.dart';
 import 'package:shopwow/Widgets/categoriesListTile.dart';
 
 class CategoriesScreen extends StatefulWidget {
@@ -48,8 +49,13 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                             fontSize:
                                 _widthHeight.screenHeight(context, 0.028))),
                     SizedBox(width: _widthHeight.screenWidth(context, 0.1)),
-                    Image.asset("assets/images/search.png",
-                        color: Colors.white, width: 20, height: 20)
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SearchScreen()));
+                      },
+                      child: Image.asset("assets/images/search.png",
+                          color: Colors.white, width: 20, height: 20),
+                    )
                   ],
                 ),
                 SizedBox(height: _widthHeight.screenHeight(context, 0.00065)),

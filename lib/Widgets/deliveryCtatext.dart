@@ -10,15 +10,13 @@ class DeliveryCtaText extends StatefulWidget {
 }
 
 class _DeliveryCtaTextState extends State<DeliveryCtaText> {
-
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration:  BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: Colors.grey.withOpacity(0.4), width: 1.5)
-        )
-      ),
+      decoration: BoxDecoration(
+          border: Border(
+              bottom:
+                  BorderSide(color: Colors.grey.withOpacity(0.4), width: 1.5))),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(

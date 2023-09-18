@@ -17,7 +17,7 @@ class ApiServices with ChangeNotifier {
     if (response.statusCode == 200) {
       List<dynamic> data = jsonDecode(response.body);
       List<Product> products =
-          data.map((item) => Product.fromJson(item)).toList();
+          data.map((item) => Product.fromMap(item)).toList();
 
       return products;
     } else {
