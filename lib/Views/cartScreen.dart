@@ -7,6 +7,7 @@ import 'package:shopwow/Widgets/deliveryCtatext.dart';
 import 'package:shopwow/Widgets/emptyCart.dart';
 
 import '../Widgets/cartButton.dart';
+import '../Widgets/cartWishlistButton.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -47,40 +48,89 @@ class _CartScreenState extends State<CartScreen> {
                 if (provider.cartProducts.isEmpty) {
                   return EmptyCart();
                 }
-                return ListView.builder(
-                    itemCount: provider.cartProducts.length,
-                    itemBuilder: (context, index) {
-                      var cartProduct = provider.cartProducts[index];
+                return Stack(
+                  children: [
+                    ListView.builder(
+                        itemCount: provider.cartProducts.length,
+                        itemBuilder: (context, index) {
+                          var cartProduct = provider.cartProducts[index];
 
-                      return Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 7, right: 7),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("${cartProduct.category}", style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black
-                                  )),
-                                  Text("${cartProduct.price}", style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black
-                                  ))
-                                ],
-                              ),
+                          return Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 7, right: 7),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("${cartProduct.category}".toUpperCase(),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                              color: Colors.black)),
+                                      Text("\$ ${cartProduct.price}",
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                              color: Colors.black))
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                    height: _widthHeight.screenHeight(
+                                        context, 0.0012)),
+                                CartButton(
+                                  onPressed: () {
+                                    provider.removeItFromCart(cartProduct);
+                                  },
+                                )
+                              ],
                             ),
-                            SizedBox(height: _widthHeight.screenHeight(context, 0.0012)),
-                            CartButton(onPressed: () {
-                              provider.removeItFromCart(cartProduct);
-                            },)
-                          ],
-                        ),
-                      );
-                    });
+                          );
+                        }),
+                    Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: DecoratedBox(
+                          decoration: const BoxDecoration(
+                              border: Border(
+                                  top: BorderSide(
+                                      color: Colors.black,
+                                      width: 0.3))),
+                          child: Container(
+                            height: 120,
+                            padding: const EdgeInsets.all(14.0),
+                            decoration: BoxDecoration(
+                                color: Colors.grey.withOpacity(0.1)),
+                            child:  Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                     Text("Order Amount \n This is the second line.", style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16
+                                    )),
+                                    Text(" \$ 1200.00", style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                      fontSize: 18
+                                    ),)
+                                  ],
+                                ),
+                                CartWishlistButton(onPressed: () {  },)
+                              ],
+                            ),
+                          ),
+                        ))
+                  ],
+                );
               }),
             )
           ],

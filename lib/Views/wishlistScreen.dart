@@ -35,6 +35,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+                    fontSize: 18
                   )),
             ),
           ),
