@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
       SizedBox(
         width: double.infinity, // Expand horizontally within the Column
         height: _widthHeight.screenHeight(
-            context, 0.28), // Set the desired height for the ListView
+            context, 0.24), // Set the desired height for the ListView
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: 3, // Replace with the desired number of items
@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Container(
                   width: _widthHeight.screenWidth(
-                      context, 0.8), // Set the desired width for each item
+                      context, 0.75), // Set the desired width for each item
                   decoration: BoxDecoration(
                     color: Colors.pinkAccent,
                     borderRadius: BorderRadius.circular(

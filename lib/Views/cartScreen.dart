@@ -6,6 +6,8 @@ import 'package:shopwow/Provider/cartProvider.dart';
 import 'package:shopwow/Widgets/deliveryCtatext.dart';
 import 'package:shopwow/Widgets/emptyCart.dart';
 
+import '../Widgets/cartButton.dart';
+
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
@@ -45,32 +47,40 @@ class _CartScreenState extends State<CartScreen> {
                 if (provider.cartProducts.isEmpty) {
                   return EmptyCart();
                 }
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView.builder(
-                      itemCount: provider.cartProducts.length,
-                      itemBuilder: (context, index) {
-                        var cartProduct = provider.cartProducts[index];
-                        
-                        return Card(
-                            child: ListTile(
-                          title: Text(
-                            cartProduct.title!,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.black),
-                          ),
-                          subtitle: Text(
-                            cartProduct.description!,
-                            maxLines: 2,
-                          ),
-                          trailing: GestureDetector(
-                              onTap: () {
-                                provider.removeItFromCart(cartProduct);
-                              },
-                              child: const Icon(Icons.delete)),
-                        ));
-                      }),
-                );
+                return ListView.builder(
+                    itemCount: provider.cartProducts.length,
+                    itemBuilder: (context, index) {
+                      var cartProduct = provider.cartProducts[index];
+
+                      return Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 7, right: 7),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("${cartProduct.category}", style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black
+                                  )),
+                                  Text("${cartProduct.price}", style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black
+                                  ))
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: _widthHeight.screenHeight(context, 0.0012)),
+                            CartButton(onPressed: () {
+                              provider.removeItFromCart(cartProduct);
+                            },)
+                          ],
+                        ),
+                      );
+                    });
               }),
             )
           ],
