@@ -67,12 +67,22 @@ class _WishlistScreenState extends State<WishlistScreen> {
                             child: Container(
                               color: Colors.grey.withOpacity(0.1),
                               height: _widthHeight.screenHeight(context, 0.1),
-                              child: const Row(
+                              child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  WishlistButton(text: "CLEAR"),
-                                  WishlistButton(text: "REMOVE")
+                                  InkWell(
+                                      onTap: () {
+                                        provider.clearTheWishlist();
+                                      },
+                                      child:
+                                          const WishlistButton(text: "CLEAR")),
+                                  InkWell(
+                                      onTap: () {
+//Here we are going tle remove the product from the wishlits
+                                      },
+                                      child:
+                                          const WishlistButton(text: "REMOVE"))
                                 ],
                               ),
                             ),
