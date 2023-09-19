@@ -5,7 +5,6 @@ import 'package:shopwow/Const/widthheight.dart';
 import 'package:shopwow/Provider/cartProvider.dart';
 import 'package:shopwow/Widgets/deliveryCtatext.dart';
 import 'package:shopwow/Widgets/emptyCart.dart';
-
 import '../Widgets/cartButton.dart';
 import '../Widgets/cartWishlistButton.dart';
 
@@ -54,28 +53,35 @@ class _CartScreenState extends State<CartScreen> {
                         itemCount: provider.cartProducts.length,
                         itemBuilder: (context, index) {
                           var cartProduct = provider.cartProducts[index];
-
                           return Padding(
-                            padding: const EdgeInsets.all(12.0),
+                            padding: EdgeInsets.all(
+                                _widthHeight.screenWidth(context, 0.012)),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 7, right: 7),
+                                  padding: EdgeInsets.only(
+                                      left: _widthHeight.screenWidth(
+                                          context, 0.07),
+                                      right: _widthHeight.screenWidth(
+                                          context, 0.07)),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text("${cartProduct.category}".toUpperCase(),
-                                          style: const TextStyle(
+                                      Text(
+                                          "${cartProduct.category}"
+                                              .toUpperCase(),
+                                          style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 16,
+                                              fontSize: _widthHeight
+                                                  .screenHeight(context, 0.016),
                                               color: Colors.black)),
                                       Text("\$ ${cartProduct.price}",
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 16,
+                                              fontSize: _widthHeight
+                                                  .screenHeight(context, 0.016),
                                               color: Colors.black))
                                     ],
                                   ),
@@ -100,31 +106,43 @@ class _CartScreenState extends State<CartScreen> {
                           decoration: const BoxDecoration(
                               border: Border(
                                   top: BorderSide(
-                                      color: Colors.black,
-                                      width: 0.3))),
+                                      color: Colors.black, width: 0.3))),
                           child: Container(
-                            height: 120,
-                            padding: const EdgeInsets.all(14.0),
+                            height: _widthHeight.screenHeight(context, 0.16),
+                            padding: EdgeInsets.all(
+                                _widthHeight.screenHeight(context, 0.01)),
                             decoration: BoxDecoration(
                                 color: Colors.grey.withOpacity(0.1)),
-                            child:  Column(
+                            child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                SizedBox(
+                                    height: _widthHeight.screenHeight(
+                                        context, 0.004)),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                     Text("Order Amount \n This is the second line.", style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16
-                                    )),
-                                    Text(" \$ 1200.00", style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                      fontSize: 18
-                                    ),)
+                                    Text(
+                                        "Order Amount \n This is the second line.",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: _widthHeight.screenHeight(
+                                                context, 0.016))),
+                                    Text(
+                                      " \$ 1200.00",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                          fontSize: _widthHeight.screenHeight(
+                                              context, 0.018)),
+                                    )
                                   ],
                                 ),
-                                CartWishlistButton(onPressed: () {  },)
+                                SizedBox(
+                                    height: _widthHeight.screenHeight(
+                                        context, 0.016)),
+                                CartWishlistButton(onPressed: () {})
                               ],
                             ),
                           ),

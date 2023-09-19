@@ -34,10 +34,10 @@ class _CategoriesListTileState extends State<CategoriesListTile> {
           child: ListTile(
             title: Row(
               children: [
-                Image.asset(widget.imageAsset.toString(),
+                widget.imageAsset.isNotEmpty ?  Image.asset(widget.imageAsset.toString(),
                     width: _heightWidth.screenHeight(context, 0.04),
-                    height: _heightWidth.screenHeight(context, 0.04)),
-                const SizedBox(width: 10),
+                    height: _heightWidth.screenHeight(context, 0.04)): const SizedBox(height: 0),
+                 SizedBox(width: _heightWidth.screenWidth(context, 0.010)),
                 Text(widget.title.toString()),
               ],
             ),

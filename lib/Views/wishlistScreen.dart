@@ -33,22 +33,21 @@ class _WishlistScreenState extends State<WishlistScreen> {
               alignment: Alignment.center,
               child: Text("Wishlist",
                   style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18
-                  )),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18)),
             ),
           ),
           Expanded(
             child:
                 Consumer<WishlistProvider>(builder: (context, provider, child) {
-              if (provider.wishlists.isEmpty) {
-                return EmptyWishlist();
-              }
+                if (provider.wishlists.isEmpty) {
+                  return EmptyWishlist();
+                }
               return Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(_widthHeight.screenHeight(context, 0.02)),
                     child: ListView.builder(
                         itemCount: provider.wishlists.length,
                         itemBuilder: (context, index) {
@@ -80,7 +79,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                           const WishlistButton(text: "CLEAR")),
                                   InkWell(
                                       onTap: () {
-//Here we are going tle remove the product from the wishlits
+                                        //  provider.removeProductFromWishlist(wishlistProduct);
+//Here we are going tle remove the product from the wishlists
                                       },
                                       child:
                                           const WishlistButton(text: "REMOVE"))

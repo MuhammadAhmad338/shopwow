@@ -21,11 +21,12 @@ class WishlistItem extends StatelessWidget {
           provider.toggleIt();
         },
         child: DecoratedBox(
-            decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(color: Colors.grey.withOpacity(0.4), width: 1.5))),
+          decoration: BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(
+                      color: Colors.grey.withOpacity(0.4), width: 1.5))),
           child: SizedBox(
-            height: _widthHeight.screenHeight(context, 0.11),
+            height: _widthHeight.screenHeight(context, 0.1),
             width: double.infinity,
             child:
                 Consumer<WishlistProvider>(builder: (context, provider, child) {
@@ -52,19 +53,23 @@ class WishlistItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis),
                   provider.toggleButton
                       ? Container(
-                          height: 30,
-                          width: 30,
-                          padding: const EdgeInsets.all(8),
+                          height: 35,
+                          width: 35,
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             border: Border.all(width: 2, color: Colors.black),
-                            color: Colors.pinkAccent.withOpacity(0.4),
+                            color: Colors.pink.withOpacity(0.6),
                             borderRadius: BorderRadius.circular(70),
                           ),
-                          child: Image.asset("assets/images/checkmark.png",
-                              height: 30, width: 30),
-                     )
+                          child: Image.asset(
+                            "assets/images/checkmark.png",
+                            height: 30,
+                            width: 30,
+                            color: Colors.black,
+                          ),
+                        )
                       : Image.asset("assets/images/checkmark.png",
-                          height: 30, width:30)
+                          height: 25, width: 25)
                 ],
               );
             }),
