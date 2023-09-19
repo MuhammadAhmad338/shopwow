@@ -50,8 +50,7 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
                               height: _widthHeight.screenHeight(context, 0.06),
                               width: _widthHeight.screenWidth(context, 0.06),
                             )),
-                        Text(widget.product.title!,
-                        maxLines: 1,
+                        Text("Product",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: _widthHeight.screenWidth(context, 0.05),
