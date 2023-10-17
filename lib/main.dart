@@ -4,15 +4,19 @@ import 'package:provider/provider.dart';
 import 'package:shopwow/Const/constants.dart';
 import 'package:shopwow/Provider/bottomNavProvider.dart';
 import 'package:shopwow/Provider/cartProvider.dart';
+import 'package:shopwow/Provider/wishlistProvider.dart';
+import 'package:shopwow/Services/apiServices.dart';
 import 'package:shopwow/Views/bottomNavigationBar.dart';
 import 'Provider/counterProvider.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => CounterProvider()),
     ChangeNotifierProvider(create: (context) => CartProvider()),
-    ChangeNotifierProvider(create: (context) => BottomBarProvider())
+    ChangeNotifierProvider(create: (context) => BottomBarProvider()),
+    ChangeNotifierProvider(create: (context) => ApiServices()),
+    ChangeNotifierProvider(create: (context) => WishlistProvider())
   ], child: const MyApp()));
 }
 
@@ -43,7 +47,7 @@ class _MyAppState extends State<MyApp> {
         if (currentConnectivity != ConnectivityResult.none &&
             result == ConnectivityResult.none) {
           // Internet connection lost
-          showToast('Internet connection lost');
+          showToast('Please Check your Internet Connection');
         } else if (currentConnectivity == ConnectivityResult.none &&
             result != ConnectivityResult.none) {
           // Internet connection restored
@@ -58,7 +62,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Shop wow',
+        title: 'Shop Wow',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           fontFamily: "Comfortaa",

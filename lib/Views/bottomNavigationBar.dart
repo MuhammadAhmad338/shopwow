@@ -27,10 +27,10 @@ class _BottomNavigationBarsState extends State<BottomNavigationBars> {
           elevation: 1,
           destinations:  [
             NavigationDestination(icon: Image.asset("assets/images/home.png", width: _widthHeight.screenWidth(context, 0.05), height:  _widthHeight.screenHeight(context, 0.03),), label: "Home"),
-            NavigationDestination(icon: Image.asset("assets/images/category.png", width: _widthHeight.screenWidth(context, 0.05), height:  _widthHeight.screenHeight(context, 0.03)), label: "Wishlist"),
+            NavigationDestination(icon: Image.asset("assets/images/category.png", width: _widthHeight.screenWidth(context, 0.05), height:  _widthHeight.screenHeight(context, 0.03)), label: "Categories"),
             NavigationDestination(icon: Image.asset("assets/images/shopping-cart.png",width: _widthHeight.screenWidth(context, 0.05), height:  _widthHeight.screenHeight(context, 0.03), ), label: "Cart"),
-            NavigationDestination(icon: Image.asset("assets/images/heart.png", width: _widthHeight.screenWidth(context, 0.05), height:  _widthHeight.screenHeight(context, 0.03),), label: "asd"),
-            NavigationDestination(icon: Image.asset("assets/images/home.png", width: _widthHeight.screenWidth(context, 0.05), height:  _widthHeight.screenHeight(context, 0.03),), label: "asdasdd"),
+            NavigationDestination(icon: Image.asset("assets/images/heart.png", width: _widthHeight.screenWidth(context, 0.05), height:  _widthHeight.screenHeight(context, 0.03),), label: "Wishlist"),
+            NavigationDestination(icon: Image.asset("assets/images/user.png", width: _widthHeight.screenWidth(context, 0.05), height:  _widthHeight.screenHeight(context, 0.03),), label: "Profile"),
           ]),
     );
   }

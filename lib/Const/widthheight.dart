@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-
 class WidthHeight {
   
 // Function to get the screen width
