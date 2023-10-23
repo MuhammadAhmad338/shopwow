@@ -6,8 +6,8 @@ import 'package:shopwow/Provider/bottomNavProvider.dart';
 import 'package:shopwow/Provider/cartProvider.dart';
 import 'package:shopwow/Provider/wishlistProvider.dart';
 import 'package:shopwow/Services/apiServices.dart';
-import 'package:shopwow/Views/bottomNavigationBar.dart';
 import 'Provider/counterProvider.dart';
+import 'Views/splashScreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
         } else if (currentConnectivity == ConnectivityResult.none &&
             result != ConnectivityResult.none) {
           // Internet connection restored
-          showToast('Internet connection restored');
+          showToast('Internet Connection Restored');
         }
         currentConnectivity = result;
       });
@@ -69,6 +69,6 @@ class _MyAppState extends State<MyApp> {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.pinkAccent),
           useMaterial3: true,
         ),
-        home: const BottomNavigationBars());
+        home: const SplashScreen());
   }
 }

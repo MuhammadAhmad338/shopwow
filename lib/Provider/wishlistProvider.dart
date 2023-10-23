@@ -55,7 +55,7 @@ class WishlistProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  toggleIt() {
+  void toggleIt() {
     _toggleButton = !_toggleButton;
     notifyListeners();
   }
