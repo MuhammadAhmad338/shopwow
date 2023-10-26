@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopwow/Views/bottomNavigationBar.dart';
 
+import '../Const/widthheight.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -11,6 +13,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
  
+  final WidthHeight _widthHeight = WidthHeight();
+
   @override
   void initState() {
     super.initState();
@@ -29,17 +33,19 @@ class _SplashScreenState extends State<SplashScreen> {
           color: Colors.black87,
         ),
         child: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Text("Shop Wow",
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            Text("Shop Wow",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 26)),
-            const SizedBox(height: 5,),
+                  fontSize: _widthHeight.screenHeight(context, 0.026))),
+            SizedBox(height: _widthHeight.screenHeight(context, 0.00001)),
             Image.asset(
               'assets/images/panda.png',
-              width: 170,
-              height: 170,
+              width: _widthHeight.screenWidth(context, 0.47),
+              height: _widthHeight.screenHeight(context, 0.17)
             )
           ]),
         ),
